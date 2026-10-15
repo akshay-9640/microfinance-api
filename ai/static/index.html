@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#003366">
+<title>Microfinance Assistant</title>
+<style>
+  :root {
+    --bg: #f4f6f9; --card: #ffffff; --line: rgba(10,37,64,.12); --ink: #0a2540;
+    --muted: rgba(10,37,64,.72); --faint: rgba(10,37,64,.52); --navy: #003366;
+    --ok: #1a7f37; --bad: #cf222e; --tint: #eaf1fb;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; display: flex; flex-direction: column; }
+  header { background: var(--card); border-bottom: 1px solid var(--line); }
+  .bar { max-width: 820px; margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .bar h1 { font-size: 17px; margin: 0; letter-spacing: -0.01em; }
+  .bar .status { margin-left: auto; font-size: 12px; color: var(--faint); display: flex; gap: 10px; flex-wrap: wrap; }
+  .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; background: var(--faint); vertical-align: 1px; }
+  .dot.ok { background: var(--ok); } .dot.bad { background: var(--bad); }
+  main { flex: 1; overflow-y: auto; }
+  .thread { max-width: 820px; margin: 0 auto; padding: 24px 16px; display: flex; flex-direction: column; gap: 14px; }
+  .intro h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); letter-spacing: -0.02em; line-height: 1.15; margin: 8px 0; }
+  .intro p { color: var(--muted); margin: 0 0 14px; max-width: 60ch; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips button { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; font: 14px system-ui, sans-serif; color: var(--ink); cursor: pointer; text-align: left; transition: transform .1s ease-out, border-color .15s; }
+  .chips button:hover { border-color: rgba(0,51,102,.4); }
+  .chips button:active { transform: scale(.97); }
+  .msg { max-width: 88%; padding: 10px 14px; border-radius: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .msg.user { align-self: flex-end; background: var(--navy); color: #fff; border-bottom-right-radius: 6px; }
+  .msg.bot { align-self: flex-start; background: var(--card); border: 1px solid var(--line); border-bottom-left-radius: 6px; }
+  .msg.err { border-color: rgba(207,34,46,.4); background: #fff5f5; color: var(--bad); }
+  .tools { align-self: flex-start; max-width: 88%; font-size: 12px; color: var(--faint); }
+  .tools details { background: var(--tint); border-radius: 10px; padding: 6px 10px; margin-top: 4px; }
+  .tools summary { cursor: pointer; }
+  .tools code { font: 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); overflow-wrap: anywhere; }
+  .thinking { align-self: flex-start; color: var(--faint); font-size: 14px; }
+  footer { background: var(--card); border-top: 1px solid var(--line); }
+  form { max-width: 820px; margin: 0 auto; padding: 12px 16px; display: flex; gap: 8px; }
+  textarea { flex: 1; resize: none; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font: 15px/1.4 system-ui, sans-serif; color: var(--ink); min-height: 44px; max-height: 140px; }
+  textarea:focus { outline: none; border-color: rgba(0,51,102,.5); }
+  .send { background: var(--navy); color: #fff; border: 0; border-radius: 12px; padding: 0 18px; font: 600 14px system-ui, sans-serif; cursor: pointer; transition: transform .1s ease-out; }
+  .send:active { transform: scale(.97); }
+  .send:disabled { opacity: .45; cursor: not-allowed; }
+  .note { max-width: 820px; margin: 0 auto; padding: 0 16px 10px; font-size: 12px; color: var(--faint); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <h1>Microfinance Assistant</h1>
+    <div class="status"><span id="st-api"><span class="dot"></span>API</span><span id="st-llm"><span class="dot"></span>Claude</span></div>
+  </div>
+</header>
+<main>
+  <div class="thread" id="thread">
+    <div class="intro" id="intro">
+      <h2>Ask about agent withdrawals and AEPS activity.</h2>
+      <p>Claude answers by calling the same read-only tools the MCP server exposes, and shows you every tool call it made. The data is a fictional demo set.</p>
+      <div class="chips" id="chips">
+        <button>Which agent withdrew the most in September 2026?</button>
+        <button>Summarize all withdrawals by agent.</button>
+        <button>Show AG1001's transactions in October 2026.</button>
+        <button>How much AEPS activity is there overall?</button>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <form id="form">
+    <textarea id="q" rows="1" placeholder="Ask a question about the data..." aria-label="Your question" maxlength="2000"></textarea>
+    <button class="send" id="send" type="submit">Ask</button>
+  </form>
+  <div class="note">Read-only: the assistant cannot log in, change passwords or modify data.</div>
+</footer>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const thread = $("#thread"), form = $("#form"), q = $("#q"), send = $("#send");
+const history = [];
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function add(cls, html) {
+  const el = document.createElement("div"); el.className = cls; el.innerHTML = html;
+  thread.appendChild(el); el.scrollIntoView({ block: "end" }); return el;
+}
+
+async function health() {
+  try {
+    const h = await (await fetch("/api/health")).json();
+    $("#st-api").innerHTML = `<span class="dot ${h.api ? "ok" : "bad"}"></span>API ${h.api ? "online" : "offline"}`;
+    $("#st-llm").innerHTML = `<span class="dot ${h.llm_configured ? "ok" : "bad"}"></span>${h.llm_configured ? esc(h.model) : "no API key"}`;
+  } catch { /* status stays neutral */ }
+}
+
+async function ask(text) {
+  $("#intro")?.remove();
+  add("msg user", esc(text));
+  const wait = add("thinking", "Thinking and calling tools...");
+  send.disabled = true;
+  try {
+    const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text, history }) });
+    const d = await r.json();
+    wait.remove();
+    if (!r.ok) { add("msg bot err", esc(d.error || "Something went wrong.")); return; }
+    if (d.tool_calls.length) {
+      add("tools", d.tool_calls.map((c) => `<details><summary>${c.is_error ? "Tool error" : "Called"} <b>${esc(c.name)}</b></summary>
+        <code>input: ${esc(JSON.stringify(c.input))}</code><br><code>result: ${esc(c.preview)}${c.preview.length >= 300 ? "..." : ""}</code></details>`).join(""));
+    }
+    add("msg bot", esc(d.answer));
+    history.push({ role: "user", text }, { role: "assistant", text: d.answer });
+  } catch {
+    wait.remove(); add("msg bot err", "Could not reach the assistant.");
+  } finally {
+    send.disabled = false; q.focus();
+  }
+}
+
+form.addEventListener("submit", (e) => { e.preventDefault(); const t = q.value.trim(); if (t) { q.value = ""; ask(t); } });
+q.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
+$("#chips").addEventListener("click", (e) => { if (e.target.tagName === "BUTTON") ask(e.target.textContent); });
+health();
+</script>
+</body>
+</html>

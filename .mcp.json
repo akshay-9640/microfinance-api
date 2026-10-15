@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "microfinance": {
+      "command": "uv",
+      "args": ["run", "--directory", "ai", "server.py"],
+      "env": { "MICROFINANCE_API_URL": "http://localhost:8080" }
+    }
+  }
+}

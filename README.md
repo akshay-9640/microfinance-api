@@ -5,6 +5,87 @@ management, plus reporting over wallet withdrawal transactions (all withdrawals,
 by agent, and AEPS withdrawal / mini-statement / balance-enquiry counts).
 
 Stack: Java 11, Spring Boot 2.5, Spring Data JPA, SQLite (default) or MySQL, BCrypt password hashing.
+AI layer: a Python MCP server (MCP SDK 2.x) and a Claude-powered assistant app, in `ai/`.
+
+## Use it with AI: two ways
+
+The same three read-only tools power both, so they always agree.
+
+```
+                         ┌──────────────────────────────┐
+ Way 1: your AI client   │ ai/server.py  (MCP server)   │      ┌────────────────────┐
+ Claude Desktop, Claude ─▶  list_withdrawals            ├─────▶│ Spring Boot REST   │
+ Code, any MCP client    │  agent_withdrawal_summary    │ HTTP │ API (this repo)    │
+                         │  aeps_activity               │      └────────────────────┘
+ Way 2: ready-made app   │                              │
+ ai/app.py web chat ─────▶ (MCP client, in-process or   │
+ ai/agent.py CLI   Claude │  over Streamable HTTP)       │
+                         └──────────────────────────────┘
+```
+
+| Tool | What it answers |
+|---|---|
+| `list_withdrawals(start_date?, end_date?, agent_id?)` | Individual transactions, filtered by date range and/or agent |
+| `agent_withdrawal_summary(start_date?, end_date?)` | Per-agent count, total and average, ranked by total |
+| `aeps_activity()` | AEPS cash withdrawals, mini statements and balance enquiries |
+
+There is also a `monthly_report(month)` prompt. Login, user data and password change are
+deliberately **not** exposed: an AI agent should never handle user credentials.
+
+Start the REST API first (`./mvnw spring-boot:run`, see below). The AI side needs
+Python 3.11+ and [uv](https://docs.astral.sh/uv/).
+
+### Way 1: MCP server, for people who already use an AI client
+
+**Claude Code:** this repo ships a `.mcp.json`, so opening the project in Claude Code offers the
+`microfinance` server automatically. Then just ask, for example "which agent withdrew the most
+in September 2026?".
+
+**Claude Desktop:** add this to `claude_desktop_config.json` (use your absolute path):
+
+```json
+{
+  "mcpServers": {
+    "microfinance": {
+      "command": "uv",
+      "args": ["run", "--directory", "/absolute/path/to/microfinance-api/ai", "server.py"],
+      "env": { "MICROFINANCE_API_URL": "http://localhost:8080" }
+    }
+  }
+}
+```
+
+**Any remote MCP client:** serve Streamable HTTP and point the client at `http://<host>:8000/mcp`:
+
+```bash
+cd ai && uv run server.py --http --host 0.0.0.0 --port 8000
+```
+
+### Way 2: the AI assistant app, for people who just want answers
+
+A web chat where Claude answers questions by calling the same tools, and shows every tool call
+it made. Needs an Anthropic API key.
+
+```bash
+cd ai
+export ANTHROPIC_API_KEY=sk-ant-...
+uv run --extra app app.py                       # web chat at http://127.0.0.1:8001
+uv run --extra app agent.py "Summarize all withdrawals by agent."   # or one question from the CLI
+```
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `MICROFINANCE_API_URL` | `http://localhost:8080` | Where the REST API runs |
+| `ANTHROPIC_API_KEY` | none | Needed for the assistant only, never for the MCP server |
+| `MICROFINANCE_MODEL` | `claude-opus-5-5` | Claude model the assistant uses |
+| `MICROFINANCE_EFFORT` | `medium` | Reasoning effort: `low` to `max` |
+| `MICROFINANCE_MCP_URL` | in-process | Point the assistant at a remote MCP server instead |
+
+Tests (no network, no API key):
+
+```bash
+cd ai && uv run --extra app --extra dev pytest -q
+```
 
 ## Run it
 

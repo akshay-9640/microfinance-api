@@ -31,3 +31,8 @@ application-local.properties
 # Local SQLite database (recreated with demo data on start)
 *.db
 *.db-journal
+
+# Python (ai/)
+.venv/
+__pycache__/
+.pytest_cache/

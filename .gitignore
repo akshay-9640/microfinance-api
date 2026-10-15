@@ -36,3 +36,5 @@ application-local.properties
 .venv/
 __pycache__/
 .pytest_cache/
+*.db-wal
+*.db-shm

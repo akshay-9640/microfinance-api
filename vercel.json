@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'static showcase: nothing to install'",
+  "buildCommand": "echo 'static showcase: nothing to build'",
+  "outputDirectory": "showcase"
+}

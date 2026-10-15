@@ -1,0 +1,242 @@
+{
+ "recorded_at": "2026-10-15",
+ "server": {
+  "name": "microfinance",
+  "transport": "Streamable HTTP"
+ },
+ "tools": [
+  {
+   "name": "list_withdrawals",
+   "title": "List withdrawals",
+   "description": "List individual agent withdrawal transactions, oldest first.\n\n    Args:\n        start_date: Inclusive start date, YYYY-MM-DD. Omit for no lower bound.\n        end_date: Inclusive end date, YYYY-MM-DD. Omit for no upper bound.\n        agent_id: Only this agent's transactions, for example \"AG1001\".\n    ",
+   "input_schema": {
+    "type": "object",
+    "properties": {
+     "start_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Start Date"
+     },
+     "end_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "End Date"
+     },
+     "agent_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Agent Id"
+     }
+    },
+    "title": "list_withdrawalsArguments"
+   },
+   "read_only": true
+  },
+  {
+   "name": "agent_withdrawal_summary",
+   "title": "Withdrawal summary by agent",
+   "description": "Totals per agent over a date range: transaction count, total amount and average,\n    sorted by total amount (highest first). Use this for rankings and comparisons.\n\n    Args:\n        start_date: Inclusive start date, YYYY-MM-DD. Omit for no lower bound.\n        end_date: Inclusive end date, YYYY-MM-DD. Omit for no upper bound.\n    ",
+   "input_schema": {
+    "type": "object",
+    "properties": {
+     "start_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Start Date"
+     },
+     "end_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "End Date"
+     }
+    },
+    "title": "agent_withdrawal_summaryArguments"
+   },
+   "read_only": true
+  },
+  {
+   "name": "aeps_activity",
+   "title": "AEPS activity",
+   "description": "Overall AEPS activity counts: cash withdrawals, mini statements and balance enquiries.",
+   "input_schema": {
+    "type": "object",
+    "properties": {},
+    "title": "aeps_activityArguments"
+   },
+   "read_only": true
+  }
+ ],
+ "prompts": [
+  {
+   "name": "monthly_report",
+   "description": "Ask for a written report on one month of withdrawal activity.\n\n    Args:\n        month: The month as YYYY-MM, for example 2026-09.\n    "
+  }
+ ],
+ "calls": [
+  {
+   "label": "Top agents, September 2026",
+   "tool": "agent_withdrawal_summary",
+   "arguments": {
+    "start_date": "2026-09-01",
+    "end_date": "2026-09-30"
+   },
+   "is_error": false,
+   "result": [
+    {
+     "agent_id": "AG1001",
+     "transactions": 2,
+     "total_amount_inr": 4000.0,
+     "average_amount_inr": 2000.0
+    },
+    {
+     "agent_id": "AG1002",
+     "transactions": 1,
+     "total_amount_inr": 800.0,
+     "average_amount_inr": 800.0
+    }
+   ],
+   "error": null
+  },
+  {
+   "label": "All agents, all time",
+   "tool": "agent_withdrawal_summary",
+   "arguments": {},
+   "is_error": false,
+   "result": [
+    {
+     "agent_id": "AG1001",
+     "transactions": 3,
+     "total_amount_inr": 7000.0,
+     "average_amount_inr": 2333.33
+    },
+    {
+     "agent_id": "AG1002",
+     "transactions": 2,
+     "total_amount_inr": 4800.0,
+     "average_amount_inr": 2400.0
+    },
+    {
+     "agent_id": "AG1003",
+     "transactions": 1,
+     "total_amount_inr": 1200.0,
+     "average_amount_inr": 1200.0
+    }
+   ],
+   "error": null
+  },
+  {
+   "label": "AG1001's transactions in October 2026",
+   "tool": "list_withdrawals",
+   "arguments": {
+    "agent_id": "AG1001",
+    "start_date": "2026-10-01",
+    "end_date": "2026-10-31"
+   },
+   "is_error": false,
+   "result": [
+    {
+     "transaction_id": 6,
+     "agent_id": "AG1001",
+     "date": "2026-10-09",
+     "type": "AEPS cash withdrawal",
+     "amount_inr": 3000.0,
+     "commission_base_inr": 3000.0
+    }
+   ],
+   "error": null
+  },
+  {
+   "label": "Every withdrawal in September 2026",
+   "tool": "list_withdrawals",
+   "arguments": {
+    "start_date": "2026-09-01",
+    "end_date": "2026-09-30"
+   },
+   "is_error": false,
+   "result": [
+    {
+     "transaction_id": 1,
+     "agent_id": "AG1001",
+     "date": "2026-09-03",
+     "type": "AEPS cash withdrawal",
+     "amount_inr": 1500.0,
+     "commission_base_inr": 1500.0
+    },
+    {
+     "transaction_id": 2,
+     "agent_id": "AG1001",
+     "date": "2026-09-18",
+     "type": "Micro-ATM withdrawal",
+     "amount_inr": 2500.0,
+     "commission_base_inr": 2500.0
+    },
+    {
+     "transaction_id": 3,
+     "agent_id": "AG1002",
+     "date": "2026-09-21",
+     "type": "AEPS cash withdrawal",
+     "amount_inr": 800.0,
+     "commission_base_inr": 800.0
+    }
+   ],
+   "error": null
+  },
+  {
+   "label": "AEPS activity",
+   "tool": "aeps_activity",
+   "arguments": {},
+   "is_error": false,
+   "result": {
+    "cash_withdrawals": 4,
+    "mini_statements": 2,
+    "balance_enquiries": 3
+   },
+   "error": null
+  },
+  {
+   "label": "Bad input is rejected",
+   "tool": "list_withdrawals",
+   "arguments": {
+    "end_date": "30-09-2026"
+   },
+   "is_error": true,
+   "result": null,
+   "error": "Error executing tool list_withdrawals: end_date must be a date in YYYY-MM-DD format, got '30-09-2026'"
+  }
+ ]
+}

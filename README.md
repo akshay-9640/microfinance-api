@@ -87,6 +87,13 @@ Tests (no network, no API key):
 cd ai && uv run --extra app --extra dev pytest -q
 ```
 
+## Showcase page
+
+`showcase/` is a static page (deployed on Vercel via `vercel.json`) that explains the project and
+replays **real** MCP tool calls recorded from the running server, with no API key involved. To
+refresh the recordings, run the REST API and `uv run server.py --http --port 8000`, then
+`cd ai && uv run record_showcase.py`.
+
 ## Run it
 
 Requires Java 11+. No database server needed: by default the API uses a local SQLite file

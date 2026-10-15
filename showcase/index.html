@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#003366">
+<title>Microfinance API for AI</title>
+<meta name="description" content="A Spring Boot micro-finance API with an MCP server and a Claude-powered assistant: two ways to put the same read-only tools in front of AI.">
+<style>
+  :root {
+    --bg: #f4f6f9; --card: #ffffff; --line: rgba(10,37,64,.12); --ink: #0a2540;
+    --muted: rgba(10,37,64,.72); --faint: rgba(10,37,64,.52); --navy: #003366;
+    --ok: #1a7f37; --bad: #cf222e; --tint: #eaf1fb; --code: #0d1b2a;
+    --r-lg: 16px; --r-md: 12px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--navy); }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  nav.top { background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+  nav.top .wrap { display: flex; align-items: center; gap: 18px; height: 54px; overflow-x: auto; white-space: nowrap; }
+  nav.top b { font-size: 15px; margin-right: auto; }
+  nav.top a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  nav.top a:hover { color: var(--ink); }
+  section { padding: 56px 0 8px; }
+  h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 16px; max-width: 18ch; }
+  h1 span { color: var(--faint); }
+  h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 8px; }
+  .lede { color: var(--muted); max-width: 64ch; margin: 0 0 20px; font-size: 17px; }
+  .sub { color: var(--muted); max-width: 64ch; margin: 0 0 24px; }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { display: inline-block; background: var(--navy); color: #fff; text-decoration: none; border-radius: 999px; padding: 10px 18px; font-weight: 600; font-size: 14px; transition: transform .1s ease-out; border: 0; cursor: pointer; }
+  .btn:active { transform: scale(.97); }
+  .btn.ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; box-shadow: 0 1px 2px rgba(10,37,64,.04); }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 28px; }
+  .facts .card { padding: 16px; }
+  .facts b { display: block; font-size: 22px; letter-spacing: -0.02em; }
+  .facts span { color: var(--faint); font-size: 14px; }
+
+  /* architecture */
+  .arch { display: grid; grid-template-columns: 1fr 40px 1.1fr 40px 0.9fr; align-items: center; gap: 0; }
+  .arch .col { display: flex; flex-direction: column; gap: 12px; }
+  .arch .way small { display: block; font-size: 12px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: .06em; }
+  .arch .way b { display: block; margin: 2px 0 4px; }
+  .arch .way p, .arch .box p { margin: 0; color: var(--muted); font-size: 14px; }
+  .arch .arrow { text-align: center; color: var(--faint); font-size: 22px; }
+  .arch .box { border-color: rgba(0,51,102,.35); }
+  .arch .box ul { margin: 8px 0 0; padding-left: 18px; font: 13px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  @media (max-width: 860px) { .arch { grid-template-columns: minmax(0, 1fr); } .arch .arrow { transform: rotate(90deg); padding: 4px 0; } }
+
+  /* explorer */
+  .explorer { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 12px; }
+  @media (max-width: 860px) { .explorer { grid-template-columns: minmax(0, 1fr); } }
+  .explorer > *, .arch > *, .assistant > *, .grid2 > * { min-width: 0; }
+  .examples { display: flex; flex-direction: column; gap: 6px; }
+  .examples button { text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md); padding: 10px 12px; font: inherit; font-size: 14px; color: var(--ink); cursor: pointer; transition: transform .1s ease-out; }
+  .examples button:active { transform: scale(.98); }
+  .examples button small { display: block; color: var(--faint); font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .examples button[aria-pressed="true"] { border-color: var(--navy); box-shadow: inset 0 0 0 1px var(--navy); }
+  .label { font-size: 12px; font-weight: 600; color: var(--faint); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 6px; }
+  pre.code { margin: 0; background: var(--code); color: #d6e2f0; border-radius: var(--r-md); padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.55; }
+  .resp { margin-top: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--faint); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  th.num { text-align: right; }
+  .tablewrap { overflow-x: auto; }
+  .err { background: #fff5f5; border: 1px solid rgba(207,34,46,.3); color: var(--bad); border-radius: var(--r-md); padding: 12px 14px; font-size: 14px; }
+  .rawtoggle { background: none; border: 0; color: var(--navy); font: inherit; font-size: 13px; cursor: pointer; padding: 0; margin-top: 10px; }
+
+  /* tools */
+  .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .tools h3 { margin: 0 0 6px; font: 600 15px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .tools p { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: #e6f4ea; color: var(--ok); margin-bottom: 8px; }
+  .params { font: 12.5px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); }
+
+  /* connect */
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 12px; overflow-x: auto; }
+  .tabs button { background: none; border: 0; border-bottom: 2px solid transparent; padding: 8px 12px; font: inherit; font-size: 14px; color: var(--muted); cursor: pointer; white-space: nowrap; }
+  .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--navy); font-weight: 600; }
+  .copywrap { position: relative; }
+  .copy { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+  .note { color: var(--faint); font-size: 14px; margin: 10px 0 0; }
+
+  /* assistant */
+  .assistant { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: start; }
+  @media (max-width: 860px) { .assistant { grid-template-columns: 1fr; } }
+  .assistant img { width: 100%; display: block; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--bg); }
+  ol.steps { margin: 0 0 16px; padding-left: 20px; color: var(--muted); }
+  ol.steps li { margin-bottom: 6px; }
+  ol.steps b { color: var(--ink); font-weight: 600; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+  .grid2 h3 { margin: 0 0 8px; font-size: 16px; }
+  .grid2 ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+  .grid2 li { margin-bottom: 4px; }
+  footer { padding: 48px 0 64px; color: var(--faint); font-size: 14px; }
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Sections">
+  <div class="wrap">
+    <b>Microfinance API for AI</b>
+    <a href="#how">How it works</a>
+    <a href="#explorer">Try the tools</a>
+    <a href="#connect">Connect Claude</a>
+    <a href="#assistant">Assistant app</a>
+    <a href="https://github.com/akshay-9640/microfinance-api" target="_blank" rel="noreferrer">GitHub</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section style="padding-top:64px">
+    <h1><span>A back-office API,</span> ready for AI agents.</h1>
+    <p class="lede">A Spring Boot micro-finance API (agent withdrawals, AEPS reporting, secure admin auth) with an AI layer on top: an <b>MCP server</b> any AI client can plug into, and a <b>Claude-powered assistant</b> that answers questions in plain English. Both use the same read-only tools.</p>
+    <div class="btns">
+      <a class="btn" href="#explorer">Try the tools</a>
+      <a class="btn ghost" href="https://github.com/akshay-9640/microfinance-api" target="_blank" rel="noreferrer">View the code</a>
+    </div>
+    <div class="facts">
+      <div class="card"><b>3 tools</b><span>read-only, typed inputs and outputs</span></div>
+      <div class="card"><b>2 transports</b><span>stdio and Streamable HTTP</span></div>
+      <div class="card"><b>0 credentials</b><span>auth endpoints never exposed to AI</span></div>
+      <div class="card"><b>19 tests</b><span>5 Java, 14 Python, all offline</span></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>Two ways in, one set of tools</h2>
+    <p class="sub">People who already use an AI client plug in the MCP server. People who just want answers use the assistant app, which is itself an MCP client. Add a tool once and both get it.</p>
+    <div class="arch">
+      <div class="col">
+        <div class="card way"><small>Way 1</small><b>Your AI client</b><p>Claude Desktop, Claude Code, or any MCP client connects directly.</p></div>
+        <div class="card way"><small>Way 2</small><b>Assistant app</b><p>A web chat and CLI where Claude picks the tools and shows every call.</p></div>
+      </div>
+      <div class="arrow" aria-hidden="true">&rarr;</div>
+      <div class="card box"><b>MCP server</b><p>Python, MCP SDK 2.x. Validates input before anything reaches the API.</p>
+        <ul><li>list_withdrawals</li><li>agent_withdrawal_summary</li><li>aeps_activity</li><li>monthly_report (prompt)</li></ul></div>
+      <div class="arrow" aria-hidden="true">&rarr;</div>
+      <div class="card box"><b>REST API</b><p>Java, Spring Boot. SQLite with demo data by default, MySQL in production.</p></div>
+    </div>
+  </section>
+
+  <section id="explorer">
+    <h2>Try the tools</h2>
+    <p class="sub">Each example is a real <code>tools/call</code> recorded from the MCP server running against the API<span id="rec"></span>. Pick one to see exactly what an AI agent sends and gets back.</p>
+    <div class="explorer">
+      <div class="examples" id="examples"></div>
+      <div class="card">
+        <p class="label">Request</p>
+        <pre class="code" id="req"></pre>
+        <div class="resp">
+          <p class="label">Response</p>
+          <div id="resp"></div>
+          <button class="rawtoggle" id="raw-btn" aria-expanded="false">Show raw JSON</button>
+          <pre class="code" id="raw" hidden style="margin-top:8px"></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The tools</h2>
+    <p class="sub">What an AI client discovers when it connects (<code>tools/list</code>). All are marked read-only. Login, user data and password change are deliberately left out: an AI agent should never handle credentials.</p>
+    <div class="tools" id="tools"></div>
+  </section>
+
+  <section id="connect">
+    <h2>Connect Claude</h2>
+    <p class="sub">Run the API (<code>./mvnw spring-boot:run</code>) and add the server to your client. No API key needed for this path.</p>
+    <div class="card">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-cfg="code">Claude Code</button>
+        <button role="tab" aria-selected="false" data-cfg="desktop">Claude Desktop</button>
+        <button role="tab" aria-selected="false" data-cfg="http">Any MCP client (HTTP)</button>
+      </div>
+      <div class="copywrap"><button class="copy" id="copy">Copy</button><pre class="code" id="cfg"></pre></div>
+      <p class="note" id="cfg-note"></p>
+    </div>
+  </section>
+
+  <section id="assistant">
+    <h2>The assistant app</h2>
+    <p class="sub">For people who just want answers: ask in plain English, and Claude calls the tools for you.</p>
+    <div class="assistant">
+      <img src="assets/assistant.png" alt="The Microfinance Assistant web chat with suggested questions" width="1000" height="564">
+      <div>
+        <ol class="steps">
+          <li><b>You ask</b> "Which agent withdrew the most in September 2026?"</li>
+          <li><b>Claude chooses a tool</b> and its arguments, here <code>agent_withdrawal_summary</code> for 2026-09-01 to 2026-09-30.</li>
+          <li><b>The app runs it through MCP</b> against the API and hands the result back.</li>
+          <li><b>Claude answers</b> using only numbers from tool results, and the chat shows every tool call it made so you can check them.</li>
+        </ol>
+        <p class="note" style="margin:0 0 12px">It runs on your own machine with your own Anthropic API key. It is not hosted publicly, so there is no shared key for anyone to misuse.</p>
+        <div class="copywrap"><button class="copy" data-copy="run">Copy</button><pre class="code" id="run">cd microfinance-api/ai
+export ANTHROPIC_API_KEY=sk-ant-...
+uv run --extra app app.py   # http://127.0.0.1:8001</pre></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Under the hood</h2>
+    <div class="grid2">
+      <div class="card"><h3>Stack</h3><ul>
+        <li>Java 11, Spring Boot 2.5, Spring Data JPA, BCrypt</li>
+        <li>SQLite with fake demo data by default, MySQL via environment variables</li>
+        <li>Python 3.11+, MCP SDK 2.x, Starlette, Anthropic SDK (Claude Opus 5.5)</li>
+      </ul></div>
+      <div class="card"><h3>Security choices</h3><ul>
+        <li>AI gets read-only tools only; no credentials ever pass through them</li>
+        <li>Input validated before reaching the API; API outages become clear tool errors</li>
+        <li>Password changes require the current password; hashes never leave the server</li>
+        <li>Configurable CORS, secrets only from the environment</li>
+      </ul></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  Demo data is fictional. Recorded from the real MCP server<span id="rec2"></span>. Source: <a href="https://github.com/akshay-9640/microfinance-api" target="_blank" rel="noreferrer">github.com/akshay-9640/microfinance-api</a>
+</footer>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const money = (n) => "₹" + Number(n).toLocaleString("en-IN", { maximumFractionDigits: 2 });
+const LABELS = { agent_id: "Agent", transactions: "Transactions", total_amount_inr: "Total", average_amount_inr: "Average",
+  transaction_id: "ID", date: "Date", type: "Type", amount_inr: "Amount", commission_base_inr: "Commission base",
+  cash_withdrawals: "Cash withdrawals", mini_statements: "Mini statements", balance_enquiries: "Balance enquiries" };
+
+function renderValue(k, v) {
+  return /_inr$/.test(k) ? money(v) : esc(v);
+}
+
+function renderResult(call) {
+  if (call.is_error) return `<div class="err">${esc(call.error)}</div>`;
+  const r = call.result;
+  if (Array.isArray(r)) {
+    if (!r.length) return "<p class='note'>No rows.</p>";
+    const keys = Object.keys(r[0]);
+    const num = (k) => /_inr$|^transactions$|_id$/.test(k) && k !== "agent_id";
+    return `<div class="tablewrap"><table><thead><tr>${keys.map((k) => `<th class="${num(k) ? "num" : ""}">${esc(LABELS[k] || k)}</th>`).join("")}</tr></thead>
+      <tbody>${r.map((row) => `<tr>${keys.map((k) => `<td class="${num(k) ? "num" : ""}">${renderValue(k, row[k])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  }
+  return `<div class="tablewrap"><table><tbody>${Object.entries(r).map(([k, v]) => `<tr><th>${esc(LABELS[k] || k)}</th><td class="num">${renderValue(k, v)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+
+function show(call, btn) {
+  document.querySelectorAll(".examples button").forEach((b) => b.setAttribute("aria-pressed", b === btn));
+  $("#req").textContent = JSON.stringify({ jsonrpc: "2.0", method: "tools/call", params: { name: call.tool, arguments: call.arguments } }, null, 2);
+  $("#resp").innerHTML = renderResult(call);
+  $("#raw").textContent = JSON.stringify(call.is_error ? { isError: true, content: [{ type: "text", text: call.error }] }
+                                                       : { isError: false, structuredContent: Array.isArray(call.result) ? { result: call.result } : call.result }, null, 2);
+}
+
+$("#raw-btn").addEventListener("click", () => {
+  const open = $("#raw").hidden; $("#raw").hidden = !open;
+  $("#raw-btn").setAttribute("aria-expanded", open); $("#raw-btn").textContent = open ? "Hide raw JSON" : "Show raw JSON";
+});
+
+(async () => {
+  const d = await (await fetch("data/recordings.json")).json();
+  $("#rec").textContent = " on " + d.recorded_at; $("#rec2").textContent = " on " + d.recorded_at;
+  $("#examples").innerHTML = d.calls.map((c, i) => `<button data-i="${i}" aria-pressed="false">${esc(c.label)}<small>${esc(c.tool)}</small></button>`).join("");
+  document.querySelectorAll(".examples button").forEach((b) => b.addEventListener("click", () => show(d.calls[b.dataset.i], b)));
+  show(d.calls[0], document.querySelector(".examples button"));
+
+  $("#tools").innerHTML = d.tools.map((t) => {
+    const props = t.input_schema.properties || {}; const req = t.input_schema.required || [];
+    const params = Object.keys(props).length
+      ? Object.entries(props).map(([k, v]) => `${esc(k)}${req.includes(k) ? "" : "?"}: ${esc((v.anyOf || [v]).map((x) => x.type).filter((x) => x && x !== "null").join("|") || "any")}`).join("<br>")
+      : "no parameters";
+    return `<div class="card">${t.read_only ? '<span class="tag">read-only</span>' : ""}<h3>${esc(t.name)}</h3>
+      <p>${esc((t.description || "").split("\n")[0])}</p><div class="params">${params}</div></div>`;
+  }).join("") + d.prompts.map((p) => `<div class="card"><span class="tag" style="background:var(--tint);color:var(--navy)">prompt</span>
+      <h3>${esc(p.name)}</h3><p>${esc((p.description || "").split("\n")[0])}</p><div class="params">month: string (YYYY-MM)</div></div>`).join("");
+})();
+
+const CFG = {
+  code: { text: `// .mcp.json (already in the repo: open the project in Claude Code)
+{
+  "mcpServers": {
+    "microfinance": {
+      "command": "uv",
+      "args": ["run", "--directory", "ai", "server.py"],
+      "env": { "MICROFINANCE_API_URL": "http://localhost:8080" }
+    }
+  }
+}`, note: "Open the repo in Claude Code and approve the microfinance server, then ask away." },
+  desktop: { text: `// claude_desktop_config.json
+{
+  "mcpServers": {
+    "microfinance": {
+      "command": "uv",
+      "args": ["run", "--directory", "/absolute/path/to/microfinance-api/ai", "server.py"],
+      "env": { "MICROFINANCE_API_URL": "http://localhost:8080" }
+    }
+  }
+}`, note: "Use the absolute path to the ai/ folder, then restart Claude Desktop." },
+  http: { text: `cd microfinance-api/ai
+uv run server.py --http --host 0.0.0.0 --port 8000
+# point your MCP client at http://<host>:8000/mcp`, note: "Streamable HTTP for remote agents. Put it behind your own auth before exposing it." },
+};
+let cfgKey = "code";
+function setCfg(k) {
+  cfgKey = k; $("#cfg").textContent = CFG[k].text; $("#cfg-note").textContent = CFG[k].note;
+  document.querySelectorAll("[data-cfg]").forEach((b) => b.setAttribute("aria-selected", b.dataset.cfg === k));
+}
+document.querySelectorAll("[data-cfg]").forEach((b) => b.addEventListener("click", () => setCfg(b.dataset.cfg)));
+setCfg("code");
+
+async function copyText(text, btn) {
+  try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
+  catch { btn.textContent = "Select and copy"; }
+  setTimeout(() => (btn.textContent = "Copy"), 1500);
+}
+$("#copy").addEventListener("click", (e) => copyText(CFG[cfgKey].text.replace(/^\/\/.*\n/, ""), e.target));
+document.querySelector("[data-copy=run]").addEventListener("click", (e) => copyText($("#run").textContent, e.target));
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+# Build output (never commit: it embeds a copy of application.properties)
+target/
+bin/
+out/
+build/
+*.class
+*.jar
+*.war
+
+# Maven wrapper jar is downloaded on first run
+.mvn/wrapper/maven-wrapper.jar
+
+# Secrets and local config
+.env
+*.env
+!.env.example
+application-local.properties
+
+# Logs
+*.log
+
+# IDEs and OS
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+.DS_Store
+
+# Local SQLite database (recreated with demo data on start)
+*.db
+*.db-journal

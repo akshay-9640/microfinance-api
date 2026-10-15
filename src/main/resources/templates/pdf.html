@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<head>
+
+  <title>Admin | loans Application Details
+  </title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+  rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+  rel="stylesheet">
+  <!-- BEGIN VENDOR CSS-->
+  <link rel="stylesheet" type="text/css" href="app-assets/css/vendors.css">
+<link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/pages/invoice.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
+data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+
+  <div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-header row">
+        <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+          <h3 class="content-header-title mb-0 d-inline-block">Pdf Details</h3>
+          <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a>
+                </li>
+                </li>
+                <li class="breadcrumb-item active">Pdf Details</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+      <div class="content-body">
+        <section class="card">
+          <div id="invoice-template" class="card-body">
+ <div id="invoice-customer-details" class="row pt-2">
+         
+              <div class="col-md-6 col-sm-12 text-center text-md-left">
+                <ul class="px-0 list-unstyled">
+                  
+                </ul>
+              </div>
+            </div>
+            <!--/ Invoice Customer Details -->
+            <!-- Invoice Items Details -->
+            <div id="invoice-items-details" class="pt-2">
+              <div class="row">
+                <div class="table-responsive col-sm-12">
+
+
+<div id="printableArea">
+<table align="center">
+	<tr>
+		<td align="center"> <img src="pdfimaages/tet.jpg" width="250px" height="100px"></td>
+	</tr>
+</table>
+<table align="center">
+	<tr>
+		<td align="center"> <img src="pdfimaages/12.png" width="100px" height="100px" ></td>
+		<td align="center"> <img src="pdfimaages/13.png" width="100px" height="100px"></td>
+		<td align="center"> <img src="pdfimaages/14.png" width="100px" height="100px"></td>
+		<td align="center"> <img src="pdfimaages/15.png" width="100px" height="100px"></td>
+	</tr>
+</table>
+<table align="center">
+	<tr>
+		<td align="center"> <h1>ANDHRA PRADESH GRAMEENA VIKAS BANK</h1></td>
+</tr>
+<tr>
+		<td align="center"> <?php echo $branch; ?>Branch</td>
+	</tr>
+<tr>
+<td align="center"> <u><h1>MSME SUYOG APPLICATION</h1></u></td>
+</tr>
+</table>
+<table align="center">
+	<tr>
+		<td align="left"> <b>Account Number:</b> <?php echo $beneficiary_accno;?></td>
+		<td align="right"><b> Date:</b> <?php echo date("d/m/Y");?></td>
+</tr>
+<tr>
+	<td align="left"> <b>Name of the Unit: </b> <?php echo $beneficiary_name;?></td>
+</tr>
+<tr>
+	<td align="left"> <b>Business/Unit Address:  </b> <?php echo $beneficiary_businessaddress; ?></td>
+</tr>
+<tr>
+	<td align="left"> <b>Name (s) of the Proprietor (s) / Partner (s):  </b> <?php echo $business_proname;?></td>
+</tr>
+<tr>
+	<td align="left"> <b>Residential Address:   </b> <?php echo $beneficiary_resaddress;?></td>
+</tr>
+<tr>
+	<td align="left"> <b>Contact Number: </b> <?php echo $beneficiary_phn;?></td>
+</tr>
+<tr>
+	<td align="left"> <b>Line of Activity  </b> <?php echo $beneficiary_lineofactivity;?></td>
+</tr>
+
+<tr>
+	<td align="left"> <b>Name of the Bank Mithra: </b> <?php echo $bankmitra_name; ?></td>
+</tr>
+<tr>
+	<td align="left"> <b>Bank Mithra ID:  </b> <?php echo $bankmitra_id;?></td>
+</tr>
+<tr>
+	<td align="left"> <b>Contact Number: </b> <?php echo $bankmitra_contactno;?></td>
+</tr>
+</table>
+<br><br><br>
+<p style="page-break-after: always;">&nbsp;</p>
+<p style="page-break-before: always;">&nbsp;</p>
+<table align="center">
+	<tr>
+		<td align="center"> <h1><b>ANDHRA PRADESH GRAMEENA VIKAS BANK</b></h1></td>
+</tr>
+<tr>
+	<td align="center"> <u><h1>Head Office: WARANGAL</h1></u></td>
+	</tr>
+<tr>
+<td align="center"> <?php echo $branch; ?>Branch</td>
+</tr>
+</table>
+<table align="center">
+	<tr>
+		<td align="right"> <h2>MSME SUYOG <br>APPLICATION FORM</h2></td>
+		<td align="center"> Photo of the Applicant<br>
+(Signed across the photo)
+</td>
+</tr>
+</table>
+
+<table border="1" cellspacing="0" cellpadding="0" align="center" width="75%"> 
+<tbody>
+<tr>
+<td valign="top" ><p><strong>1</strong></p></td>
+<td valign="top" ><p><strong>Name of the Applicant</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_name; ?> </td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>2</strong></p></td>
+<td valign="top" ><p><strong>Father/Husband Name</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_fatherhusband;?> </td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>3</strong></p></td>
+<td valign="top" ><p><strong>Date of Birth</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_dob;?> </td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>4</strong></p></td>
+<td valign="top" ><p><strong>PanCard(Optional)</strong></p></td>
+<td valign="top" > <?php echo $beneficiary_pancard;?> </td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>5</strong></p></td>
+<td valign="top" ><p><strong>Aadhaar Number</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_aadhaarno;?> </td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>6</strong></p></td>
+<td valign="top" ><p><strong>Residential Address</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_resaddress;?></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>7</strong></p></td>
+<td valign="top" ><p><strong>Mobile Number</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_phn;?></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>8</strong></p></td>
+<td valign="top" ><p><strong>Line of Activity</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_lineofactivity;?></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>8</strong></p></td>
+<td valign="top" ><p><strong>Business Address</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_businessaddress ?></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>9</strong></p></td>
+<td valign="top" ><p><strong>Business Existence since / For</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_businessexistence;?></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>10</strong></p></td>
+<td valign="top" ><p><strong>Details of Educational Qualifications</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_education;?></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>11</strong></p></td>
+<td valign="top" ><p><strong>Category (SC/ST/OBC/Minority/Others)</strong></p></td>
+<td valign="top" ><?php echo $beneficiary_category;?></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>12</strong></p></td>
+<td valign="top" ><p><strong>No of Family Members</strong></p></td>
+<td valign="top" ><p><strong>(a) Adults <?php echo $beneficiary_family_adult;?> (b) Children <?php echo $beneficiary_family_child;?> </strong></p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>13</strong></p></td>
+<td valign="top" ><p><strong>Sustenance required Per month</strong></p></td>
+<td valign="top" > <?php echo $beneficiary_sustenance;?> </td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>14</strong></p></td>
+<td valign="top" ><p><strong>Purpose of Loan</strong></p></td>
+<td valign="top" > <?php echo $beneficiary_purpose;?> </td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>15</strong></p></td>
+<td valign="top" ><p><strong>Term Loan Amount Required</strong></p></td>
+<td valign="top" ><p><strong>Rs. <?php echo $beneficiary_termloan;?></strong></p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>16</strong></p></td>
+<td valign="top" ><p><strong>Tenor of the Loan</strong></p></td>
+<td valign="top" ><p><strong>24 Months</strong></p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p><strong>17</strong></p></td>
+<td valign="top" ><p><strong>Details of Other Loans, if any</strong></p></td>
+<td valign="top" ><p><strong>With APGVB : <?php echo $existing_apgvb_loan;?><br>With other Banks :<?php echo $existing_otherbank_loans ;?> </strong></p></td>
+</tr>
+</tbody>
+</table>
+<br>
+<table align="center" width="75%">
+<tr>
+	<td align="justify">I request you to issue me an “MSME SUYOG” loan for the above mentioned activity and purpose. I herewith undertake that I shall use the said loan amount for our line of business activity only, as mentioned above and abide by the rules and regulations as prescribed by the Bank for “MSME-SUYOG” Scheme.</td>
+</tr>
+<tr align="justify">
+<td>I certify that all the information furnished by me is true; I have no borrowing arrangements for the unit with any bank; that no legal action has been / is being taken against me; that I shall furnish all other information that may be required by you in connection with my application; that the above information may also be exchanged by you with any agency you may deem fit and that you, your representatives, representatives of the Reserve Bank of India or any other agency as authorized by you, may, at any time, inspect / verify our assets, books of accounts etc., in our factory and business premises.</td>
+</td>
+</tr>
+</table>
+<table align="center" width="75%">
+<tr height="100px">
+	<td align="justify"><b>Date <?php echo date("d/m/Y");?> <br> Place <?php echo $beneficiary_resaddress ?></b></td>
+	<td align="right"> <b>Signature of the applicant: <?php echo $beneficiary_name; ?></b></td>
+</tr>
+<tr>
+	<td align="left"> <b>Sourced by Bank Mithra (Name): <?php echo $bankmitra_name; ?></b></td>
+	
+	
+	<td align="right"><b>Sourced by Bank Mithra with ID No: <?php echo $bankmitra_name; $bankmitra_id ?></b></td>
+</tr>
+
+</table>
+
+<br><br>
+<p style="page-break-after: always;">&nbsp;</p>
+<p style="page-break-before: always;">&nbsp;</p>
+<table align="center">
+	<tr>
+		<td align="center"> <h3>For Bank Use only</h3></td>
+</tr>
+
+</table>
+<table style="border-collapse:collapse;border:none;" align="center" width="75%">
+    <tbody>
+        <tr>
+            <td style="width: 1cm;border: 1pt solid black;padding: 0cm;height: 33.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">1</span></strong></p>
+            </td>
+            <td style="width: 233.1pt;border-top: 1pt solid black;border-right: 1pt solid black;border-bottom: 1pt solid black;border-image: initial;border-left: none;padding: 0cm;height: 33.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:12.85pt;margin-bottom:.0001pt;margin-left:5.25pt;line-height:115%;'><strong><span style="font-size:13px;line-height:115%;">Whether the applicant has experience and skill to run the business /unit</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: 1pt solid black;border-right: 1pt solid black;border-bottom: 1pt solid black;border-image: initial;border-left: none;padding: 0cm;height: 33.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><span style='font-size:13px;font-family:"Times New Roman",serif;'>Yes</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 1cm;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0cm;height: 20.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">2</span></strong></p>
+            </td>
+            <td style="width: 233.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 20.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">Loan amount</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 20.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">Rs.<?php echo $beneficiary_termloan; ?></span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 1cm;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0cm;height: 26.6pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">3</span></strong></p>
+            </td>
+            <td style="width: 233.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 26.6pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">Tenor of the loan</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 26.6pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><span style='font-size:13px;font-family:"Times New Roman",serif;'>24 Months</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 1cm;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0cm;height: 25.65pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">4</span></strong></p>
+            </td>
+            <td style="width: 233.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 25.65pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">EMI</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 25.65pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">Rs.</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 1cm;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0cm;height: 28.5pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">5</span></strong></p>
+            </td>
+            <td style="width: 233.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 28.5pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">Security</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 28.5pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">Hypothecation of assets/stock</span></strong></p>
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:1.75pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">purchased out of Bank&rsquo;s finance</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="6" style="width: 1cm;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0cm;height: 14.35pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><strong><span style="font-size:16px;">&nbsp;</span></strong></p>
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><strong><span style="font-size:16px;">&nbsp;</span></strong></p>
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><strong><span style="font-size:16px;">&nbsp;</span></strong></p>
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:7.65pt;margin-right:  .05pt;margin-bottom:.0001pt;margin-left:0cm;text-align:  center;'><strong><span style="font-size:13px;">6</span></strong></p>
+            </td>
+            <td style="width: 233.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 14.35pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:5.25pt;'><strong><span style="font-size:13px;">Pre-sanction Inspection</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 14.35pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><span style='font-size:13px;font-family:"Times New Roman",serif;'>&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 233.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 19.9pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:60.1pt;margin-bottom:.0001pt;margin-left:0cm;text-align:right;'><strong><span style="font-size:13px;">(a)Conducted By</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 19.9pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><span style='font-size:13px;font-family:"Times New Roman",serif;'>&nbsp;&nbsp;&nbsp;<?php echo $conductedby; ?></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 233.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 19.9pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:.5pt;margin-right:60.2pt;margin-bottom:.0001pt;margin-left:0cm;text-align:right;'><strong><span style="font-size:13px;">(b)Conducted on</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 19.9pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><span style='font-size:13px;font-family:"Times New Roman",serif;'><?php echo $conductedon; ?></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3" style="width: 233.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 19.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><strong><span style="font-size:16px;">&nbsp;</span></strong></p>
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;margin-top:8.95pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:59.25pt;'><strong><span style="font-size:13px;">(c)Observations</span></strong></p>
+            </td>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 19.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><span style='font-size:13px;font-family:"Times New Roman",serif;'><?php echo $observation; ?></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 19.9pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><span style='font-size:13px;font-family:"Times New Roman",serif;'>&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 220.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 19.85pt;vertical-align: top;">
+                <p style='margin:0cm;font-size:15px;font-family:"Verdana",sans-serif;'><span style='font-size:13px;font-family:"Times New Roman",serif;'>&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table align="center" width="75%">
+<tr>
+	<td align="justify">Recommended for sanction of Rs. <?php echo $beneficiary_termloan ?>(Rupees_	 only) to Sri/Smt <?php echo $beneficiary_name ?> 		s/o w/o <?php echo $beneficiary_fatherhusband ?> R/o <?php echo $beneficiary_resaddress ?>		 on the above and other usual terms and conditions.</td>
+</tr>
+</table>
+
+<table align="center" width="75%">
+<tr>
+	<td align="justify"><b>Date <?php echo date("d/m/Y");?> <br> Place <?php echo $beneficiary_resaddress ?></b></td>
+	
+
+	<td align="center"><b>Branch Manager: <br> Name: <br> ID:</b></td>
+</tr>
+
+</table><br><br><br>
+<p style="page-break-after: always;">&nbsp;</p>
+<p style="page-break-before: always;">&nbsp;</p>
+<table align="center">
+	<tr>
+		<td align="center"> <h1>ANDHRA PRADESH GRAMEENA VIKAS BANK</h1></td>
+</tr>
+<tr>
+		<td align="center"> <?php echo $branch; ?>Branch</td>
+	</tr>
+<tr>
+<td align="center"> <u><h1>ARRANGEMENT LETTER</h1></u></td>
+</tr>
+</table>
+
+<table align="center">
+	<tr>
+		<td align="left" width="100%"><b> To</b> </td>
+	</tr>
+	<tr>
+		<td align="left" width="100%"><b>Sri/Smt_<?php echo $beneficiary_name; ?></b> </td>
+		<td align="right"width="290px"><b>Date</b> <?php echo date("d/m/Y")?></td>
+	</tr>
+	<tr>
+		<td align="left" width="100%"><b><?php echo $beneficiary_resaddress ?></b> </td>
+	</tr>
+	<tr>
+		<td align="left"width="100%"><b>________________</b> </td>
+	</tr>
+</table>
+<br>
+<table align="center">
+<tr>
+		<td align="left" width="1000px">Dear Sir/Madam </td>
+	</tr>
+
+<tr>
+		<td align="left" width="1000px">MSME SUYOG SCHEME </td>
+	</tr>
+	<tr>
+		<td align="left" width="1000px">With  reference to your application dated <?php echo $date; ?> 	we hereby sanction  a Term  Loan  of Rs <?php echo $beneficiary_termloan ?>. 	(Rupees 	only)   under  the following terms and conditions.<br><br>
+1)	Purpose of the Loan : <?php echo $beneficiary_purpose ?>  <br>
+
+2)	Rate of Interest : 12%      <br>
+
+3)	Security: Hypothecation of assets/stocks financed out of Bank.    <br>
+
+4)	Repayment:	The	loan	is	repayable	in	24	Equated	Monthly	Installments	of Rs. 		each commencing from the following month of disbursement.      <br>
+5)	Insurance is waived.    <br>
+
+6)	Processing fees and other charges : NIL    <br>
+
+7)	Please sign on the duplicate of this letter in token of accepting the terms and conditions of the Scheme. <br>
+
+</td>
+	</tr>
+
+</table>
+<table align="center" width="100%">
+<tr>
+	<td align="left"><b>Yours faithfully</b></td>
+	
+
+	<td align="right">Received the original and accepted <br>the terms & conditions of the Scheme</td>
+</tr>
+
+</table><br><br><br>
+<table align="center" width="100%">
+<tr>
+	<td align="left"><b>Branch Manager</b></td>
+	
+
+	<td align="right">Borrower(s)<br>
+Noted the terms and conditions of the scheme
+</td>
+</tr>
+
+</table><br><br><br>
+
+<p style="page-break-after: always;">&nbsp;</p>
+<p style="page-break-before: always;">&nbsp;</p>
+<table align="center">
+	<tr>
+		<td align="center"> <h1>ANDHRA PRADESH GRAMEENA VIKAS BANK</h1></td>
+</tr>
+<tr>
+		<td align="center"> <?php echo $branch; ?>Branch</td>
+	</tr>
+<tr>
+<td align="center"> <u><h1>ARRANGEMENT LETTER</h1></u></td>
+</tr>
+</table>
+
+<table align="center">
+	<tr>
+		<td align="left" width="100%"><b> To</b> </td>
+	</tr>
+	<tr>
+		<td align="left" width="100%"><b>Sri/Smt_<?php echo $beneficiary_name; ?></b> </td>
+		<td align="right"width="290px"><b>Date</b> <?php echo date("d/m/Y")?></td>
+	</tr>
+	<tr>
+		<td align="left" width="100%"><b><?php echo $beneficiary_resaddress ?></b> </td>
+	</tr>
+	<tr>
+		<td align="left"width="100%"><b>________________</b> </td>
+	</tr>
+</table>
+<br>
+<table align="center">
+<tr>
+		<td align="left" width="1000px">Dear Sir/Madam </td>
+	</tr>
+
+<tr>
+		<td align="left" width="1000px">MSME SUYOG SCHEME </td>
+	</tr>
+	<tr>
+		<td align="left" width="1000px">With  reference to your application dated <?php echo date("d/m/Y")?> 	we hereby sanction  a Term  Loan  of Rs <?php echo $beneficiary_termloan ?>. 	(Rupees 	only)   under  the following terms and conditions.<br><br>
+1)	Purpose of the Loan : <?php echo $beneficiary_purpose ?>  <br>
+
+2)	Rate of Interest : 12%      <br>
+
+3)	Security: Hypothecation of assets/stocks financed out of Bank.    <br>
+
+4)	Repayment:	The	loan	is	repayable	in	24	Equated	Monthly	Installments	of Rs. 		each commencing from the following month of disbursement.      <br>
+5)	Insurance is waived.    <br>
+
+6)	Processing fees and other charges : NIL    <br>
+
+7)	Please sign on the duplicate of this letter in token of accepting the terms and conditions of the Scheme. <br>
+
+</td>
+	</tr>
+
+</table>
+<table align="center" width="100%">
+<tr>
+	<td align="left"><b>Yours faithfully</b></td>
+	
+
+	<td align="right">Received the original and accepted <br>the terms & conditions of the Scheme</td>
+</tr>
+
+</table><br><br><br>
+<table align="center" width="100%">
+<tr>
+	<td align="left"><b>Branch Manager</b></td>
+	
+
+	<td align="right">Borrower(s)<br>
+Noted the terms and conditions of the scheme
+</td>
+</tr>
+
+</table><br><br><br>
+<p style="page-break-after: always;">&nbsp;</p>
+<p style="page-break-before: always;">&nbsp;</p>
+<table align="center">
+	<tr>
+		<td align="center"> <b><h2>ఋణ ఒప్పందం</h2></b></td>
+	</tr>
+
+</table>
+
+<table align="center">
+	
+	<tr>
+		<td align="justify" width="1000px"><b>…<?php echo date("d"); ?> తేదీ   <?php echo date("m");?> నెల  <?php echo date("Y");?>.వ సంవత్సరము ...<?php echo $beneficiary_resaddress;?>.జిల్లా ,మండలం...,గ్రామ వాస్తవ్యలు శ్రీ <?php echo $beneficiary_fatherhusband;?> ...గారి కుమారుడు /కుమార్తె/ భార్య శ్రీ /ీ <?php echo $beneficiary_name;?>............పేరు (ల) తో ఇక నుండి ఋణగ్రహితగ వ్యవహరించబడు నేను /మేము మరియు వరంగల్ జిల్లాలో ప్రధాన కార్యాలయము కలిగి <?php echo $beneficiary_resaddress  ?>  ఊరు లేక గ్రామమందు శాఖ కార్యాలయము  కలిగి  బ్యాంకింగు సంభిందించిన వ్యాపారములు నిర్వహించు సంస్థగా 1976 సంవత్సరము ప్రాంతీయ గ్రామీణబ్యాంకుల చట్టము క్రింద ఎరపాటు కాబడి ఇక నుండి సదరు బ్యాంకు అని వ్యవహరించబడు ఆంధ్రప్రదేశ్ గ్రామీణ వికాస్ బ్యాంకు వారికిని మధ్య చేసుకోబడిన ఒప్పందము.</b> </td>
+		
+	</tr>
+	<tr>
+		<td align="justify" width="1000px"><b>1. ఈ క్రింద షరతులకు లోబడి .   <?php echo date("d/m/Y");?>.తేదీ దరఖాస్తునందు ఋణగ్రహిత కోరినట్లు వ్యాపారము/వృత్తి కొరకు నూటికి సాలుకు ..12%..వడ్డీ చొప్పున వడ్డీమిగులు  ప్రతి .24......నెలలు  తిరుగు వ్రాయు పద్ధతిన ఇచ్చుటకు వీలున్నంత ఎక్కువ  పరిమితిలోరూ " .<?php echo $beneficiary_termloan;?>.......లు     (అక్షరాలా...<?php echo $beneficiary_termloan;?>...................రూపాయలు మాత్రమే).
+ 1. షెడ్యూలు నందు విశదపరచినట్లు ఋణముగా ఇచ్చటకు సదరు బ్యాంకు వారు, అందులకు ఋణగ్రహిత అంగీకరించిరి.
+ ఋణముగా ఇవ్వబడిన మొత్తము అసలు వడ్డీ వాయిదాలతో సహా 2 షెడ్యూలునందు వివరించబడినట్లు ఋణగ్రహీత తీరిగి బ్యాంకు వారికి చెల్లిచవలెను. అయితేవాయిదాల పై గడువులోపు చెల్లించు ఋణములు విషయమున ఏ ఒక్క వాయిదా సకాలములో చెల్లించక బకాయి అయినప్పటికీ కూడా లేక ఈ క్రింద పేరొక్కనిన 7 వ ఉపకరీచ్చెదము నందు వివరించబడిన ఏ పరిస్థితిలోనైనా కూడా మొత్తము అసలు వాయిదాలతో సహా చెంచవలసినదిగా ఋణగ్రహీతను కోరు అధికారము సదరు బ్యాంకు వారికి కలదు.<br><br><br>
+
+2.ఋణమును మొత్తముగా కాని, కొంత బాగముకాని పొందుటకు ముందు బ్యాంకు వారు కోరినట్లుయిన.
+ అ) ఋణగ్రహీత బ్యాంకు వారికి సంతృప్తినిచ్చు విధముగా హామీనివ్వలెను.
+ ఆ) మరియు ఋణగ్రహీత సదరు బ్యాంకు నందు ఖాతాను తెరిచి అందు తనకు వచ్చు రాబడి వారముకొకసారి జమచేయవలను.సదరు ఖాతానందు జమ కాబడిన మొత్తము గాని , అందు కొంత బాగముగాని అవసరమును బట్టి నయమైంత వరకు అసలు, వడ్డీ వాయిదాల ఇతర ఖర్చులకుగాను నిర్దిష్ట ప్రయోజనములకు లేక సరిపుచ్చుటకు సదరు బ్యాంకు వారికి హక్కు కలదు.<br><br><br>
+
+3. మూడవ షెడ్యూలులో వివరించబడిన ఋణగ్రహీతయొక్క ఆస్థి ఈ ఒప్పందం వలన తీసికొనిన ఋణమును తిరిగి చెల్లించుటకు హామీగా బ్యాంకు వారికి తనఖా చేయబడినది.
+ బ్యాంకు వారికిచ్చిన ఋణము అసలు , వడ్డీ వాయిదాలతో చెల్లించు వరకు బ్యాంకు వారికి తనఖా చేయబడిన వస్తువుల పై ( ఇక్కడ నుండి ఆ విధముగా వ్యవారించబడను) ప్రథమ హక్కు మోపుదల ( మొదటి చార్జీ) కలదు. సదరు తనఖా చేయబడిన వస్తువుల వివరములు బ్యాంకు వారు కోరిన విధముగా మధ్య మధ్య బ్యాంకు వారికి తెలియచేయవలెను. సదరు తనఖా పెట్టబడిన వస్తువులు వేరొక చోటుకు తరలించబడిన వాటి ఉనికి బ్యాంకు వారికి ఎప్పటికప్పుడు తెలియపరచవలెను.<br><br><br>
+
+4. ఇందు వలన ఇవ్వబడిన హామీలు సదరు బ్యాంకు వారికి రావలసిన బాకీకి జాపుతుగా నుండును. సదరు హామీలను గురుంచి ఋణఖాతా కాని లేక ఋణగ్రహీత ఖాతా తరుగుటవలన సదరు హామీలుగాని రద్దు కావు.
+బ్యాంకు వారు ఎప్పటికప్పుడు నిరయంచిన పరిమితిలో ఋణఖాతాకు మించిన విలువయిన ఆస్థి హామీగా ఉంచుటకు ఋణగ్రహీత అంగీకరించబడినది.<br><br><br>
+
+5.ఇందలి ఎట్టి బాధ్యతలను నిర్వహించలేకపోయిన లేక ఇందుమూలముగా నీల్వబడిన హామీలు విలువగ్గిన లేక తగ్గునని సదరు బ్యాంకు వారి దృష్టిలో నిశ్చయులైన లేక ఋణగ్రహీతకు తన వాయపార ఉద్యోగములు సరిగ్గా నిర్వహించుటలేదని బ్యాంకు వారు అభిప్రాయపడినచొ ఋణగ్రహీతకు ముందు సూచన చేయకనే బ్యాంకు వారు లేక వారి ఉద్యోగులు లేక వారి ప్రతినిధులు సదరు తనఖా వస్తువులున్నచోట్ల ప్రవేశించి వాటిని ఋణగ్రహీత ఖర్చుతో స్వాధీనపరచుకొని మరియు/ఋణగ్రహీత స్వాధీనపరచవలెను. సదరు తనఖా వస్తువులను విక్రయము చేయగా వచ్చిన నికరపు ధనము బ్యాంకు వారికి అప్పటి వరకు బాకీ మొత్తము క్రింద జమచెసుకొనబడను. అయినప్పటికీ సరిపోని యెడల మిగిలిన బాకీ సొమ్మును ఋణగ్రహీత వెంటనే బ్యాంకు వారికి చెల్లించవలెను.<br><br><br>
+
+6.సదరు తనఖా చేయబడిన వస్తువుల పై ఇతరత్ర తనఖాలుగాని, హక్కులు మోపుదలగాని ఎట్టి బాదర బంధీలుగాని మరియు బ్యాంకు లిఖితపూర్వకమైన అనుమతి లేకుండా సదరు తనఖా చేయబడిన వస్తువులును మారు ఉంచుటకుగాని, మోపుదల చెయటకుగాని, ఇతరమైన చట్టబద్ధములు చేయటకుగాని, కూడదని ఇందుమూలముగా అంగీకరించబడినది.
+బ్యాంకు వారికి ఋణము క్రింద రావలసిన బాకీ పూర్తి వసూలు అగువరకు కూడా తనఖా పెట్టబడిన వస్తువులను అమ్ముటకు వీలైన మంచి స్థితిలో ఉంచి రుణాగ్రహీత కాపాడవలెను. బ్యాంకు వారు కోరినట్లయిన లేక చట్టప్రకారము అవసరమైనచొ భయప్రమాదముల అవకాశముల నుండి బీమా సంస్థలో బ్యాంకు వారి పేరునకు లేక తమ పేరు బ్యాంకు పేరు సమిష్టిగా భీమాచేసి , భీమా కిస్తు చెల్లింపు పత్రములను తదితర రశీదులను బ్యాంకు వారి పరం చేయవలెను, బ్యాంకు భీమా చేయమని కోరిన మొత్తమును గూర్చి ఎట్టి వివాదము చేయరాదు. అట్లు చేయని యెడల, లేక ఋణగ్రహీత చెల్లించవలసిన భీమా కిస్తీ బకాయిపడిన పరిస్థితులలో లేక భీమా పూర్తిచేసి లేక భీమా పెట్టాలను పునరుద్ధరింపని యెడల లేక తనఖా వస్తువుల తావును భీమా చేయని యెడల బ్యాంకు వారే భీమా పూర్తిచేసి లేక భీమా పెట్టాలను పునరుద్ధరించ లేక కిస్తీ బకాయిలు చెల్లించి అందుకయిన ఖర్చులు ఋణగ్రహీత ఖర్చులో వ్రాసి దానిని ఋణముగా పరిగణించుటకు మరియు  ఋణగ్రహీత నుండి వసూలు చేయుట కూడా చట్టబద్ధము అగును. సదరు భీమా పట్టాలు అందుకు సంబందించిన అన్ని వివాదములును కూడా బ్యాంకు వారే సరిచేయటకు లేక పరిష్కారము చెయటకు లేక రాజీచేయటకు లేక మధ్యవర్తిత్వ పరిష్కారము కానిచ్చుటకు సంపూర్ణ హక్కు కలదు. అటువంటి పరిస్థితిలో, బ్యాంకు వారు చేయు ప్రతి చర్య ఋణగ్రహీత భాద్యని చేయడమేకాక బ్యాంకు వారు బాకీ వసూలు చేయు హక్కుకి హాని కలిగించదు. ఖర్చులను మినహాయించి మిగితా భీమా మొత్తములన్నింటిని అప్పటి వరకు బ్యాంకు వారికి రావలిసిన బాకీకి చెల్లువేయగా ఇంకను మిగిలినచో ఋణగ్రహీత ఇవ్వబడును, ఒకవేళ సదరు భీమా క్రింద ఎట్టి మొత్తములయిన ఋణగ్రహీత ఇవ్వబడిన యెడల అవి తక్షణము బ్యాంకు వారికి చెల్లించవలెను.<br><br><br>
+
+7. ముందుగా సూచన చేయక ఋణగ్రహీత యొక్క ఆవరణ, కార్యాలయము , తనఖా వస్తువుల గిడ్డంగి లేక కొట్టుగదిలోనికి ప్రవేశించి తనిఖీ చెయటకు మరియు లేక విలువ కట్టుటకు తనఖా వస్తువులను సరిచూసుకొనుటకు మరియు లెక్కలు చెయటకు ఋణగ్రహీత పుస్తకములను పరిశీలించుటకు బ్యాంకు వారికి లేక వారి ప్రతినిధులకు చట్టబద్ధముగా అధికారము కలదు. తనిఖీలకు అగు ఖర్చు ఋణగ్రహీత భరించవలెను మరియు తనఖా వస్తువులు విలువ కట్టుటకగు ఖర్చు ఋణగ్రహీత ఇవ్వబడిన భయానగనెంచి ఋణగ్రహీత ఖాతకు ఖర్చులకు వ్రాయబడను. అది చెల్లింపబడు వరకు కూడా ఈ ఒప్పందము క్రింద ఋణగ్రహీతకు ఇవ్వబడిన ఋణముగా నెంచబడను. ఋణగ్రహీత ఖాతా యొక్క ఖాతా పై బ్యాంకు వారికి సార్వజనిక స్వామ్య (General Lien ) మరియు సామాను చెల్లువేయటకు ( Set Off ) సూచన చేయకుండా ఇంకా కొన్ని ఖాతాలతో కలిపి వేయటకు హక్కు కలదు. ఋణగ్రహీత వలనగాని లేక సమిష్టిగా బ్యాంకు వారి ఆధీనములోనికి వచ్చిన అన్నిరకముల చరాస్తి పై వసూలు పూర్తి అగువరకు హక్కు మోపుడల చేయు అధికారము కలదు.<br><br><br>
+
+8.ఋణగ్రహీత తన వృత్తి, వ్యాపారముయందు నిర్వహించవలసిన విధులను, షరతులను సక్రమముగా పాటించి చెల్లించవలసిన అద్దెలు, పన్నులు, ధరలు మొదలగునవి సక్రమముగ చెల్లించవలను.
+ఋణగ్రహీత ఈ ఒప్పందము ద్వారా పొందిన ఋణ ధనమును తన దరఖాస్తులో తెలిపిన విధానముగ మాత్రమే వినియోగించవలెను మరియు సదరు ధనముతో కొన్న వస్తువులను వ్యాపార, ఉద్యోగము నిమిత్తం మాత్రమే వాడునట్లు ఋణగ్రహీత అంగీకిరించటమయినది.<br><br><br>
+
+9.ప్రభుత్వము పురపాలక సంఘము లేక స్థానిక సంస్థల నుండి విధులను నిర్వహించినట్లుగా సూచన పత్రములుగాని, చర్య తీసుకొనునట్లు తెలియచేయు కాగితములు కాని వచ్చిన యెడల వెంటనే బ్యాంకు వారికి తెలియపరచవలెను.
+బ్యాంకు వారు యుక్తయుక్తములుగా కోరిన యెడల, తన ఆర్ధిక స్థితిలో కావలసిన సమాచారమునకు ఋణగ్రహీత తెలియచేయవలను.<br><br><br>
+
+10.ఈ  ఋణము ఒప్పందమునందలి లేక దస్తావేజులయందిలి షరతులను ఋణగ్రహీత పాటించకుండుట వలన ఉల్లంఘిచుట వలన బ్యాంకు వారికి సమకూరిన హక్కు అధికారము లేక పరిహార మార్గములను సదరు బ్యాంకు వారు అమలుపరచని లేక అందువలన ఆలస్యము లేక అశ్రద్ధ అయిన యెడల సదరు హక్కు, అధికార, పరిహార చర్యలు నిష్ప్రయోజనమైనవి కాని లేక వదులుకొనబడినవి కాని లేక బ్యాంకు వారు అవి ఆయోదించినవాని కాని అర్ధము కాజాలదు. అందువలన సదరు బ్యాంకు వారికి గల హక్కు అధికార పరిహారక మార్గములు వ్యర్ధము కావు లేక వీగిపోవు.<br><br><br>
+
+10.ఋణగ్రహీత ఇచ్చిన క్రింద విలాసమునకుగాని, వేరొక విలాసమునకుగాని బ్యాంకు వారు దూత వలన లేక రిజిష్టరు పోస్ట్ ద్వారా లేక తంతిద్వారా కాని పంపబడిన ఈ ఋణ ఒప్పందమునకు సంబందించిన వ్యవహార ఉత్తరములు జాబులు సూచనలు సక్రమముగా పంపబడినట్లు భావించబడును.<br><br><br>
+
+11.ఋణగ్రహీత ఋణమును దేని నిమిత్తము మంజూరు కాబడినదో, దాని గురించే ఉపయోగించవలెను. ఇతర ఆవసరములకు ఉపయోగించుట నిషేధము.<br><br><br>
+
+పైన పేరొక్కన  వడ్డీ రేట్లు భవిష్యత్తులో బ్యాంకు చేసే సవరణలను బట్టి మారుతుంటాయి.<br><br><br>
+
+పైన వ్రాసికొనిన విషయములను సాక్ష్యముగా ఋణగ్రహీత మరియు సదరు బ్యాంకు వారు సదరు గ్రామము నందు పై తెలియబడిన తేదీన ఈ క్రింది సంతకము / నిశాని చేసి  ఒడంబడిన చేసుకొని యున్నారు.
+అ ) ఆపుదారు కొరకు                                                  		  ఆ ) బ్యాంకు కొరకు <br><br><br>
+
+
+</b> </td>
+	</tr>
+
+<tr>
+<td align="left">సంతకము / నిశాని </td>
+</tr>	
+<tr>
+<td align="right">ఆంధ్రప్రదేశ్ గ్రామీణ వికాస్ బ్యాంకు కొరకు <br>బ్రాంచ్ మేనేజర్ </td>
+</tr>
+ 
+</table><br><br><br>
+<p style="page-break-after: always;">&nbsp;</p>
+<p style="page-break-before: always;">&nbsp;</p>
+
+<p align="center"><strong>షెడ్యూలు -&nbsp; I (SCHEDULE &ndash; I)</strong></p>
+<p align="center">ఋణము నిచ్చు షెడ్యూలు (Disbursement Schedule)</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center"><strong>షెడ్యూలు -&nbsp; II (SCHEDULE &ndash; II)</strong></p>
+<p align="center">తిరిగి చెల్లింపు షెడ్యూలు (Schedule of Repayment)</p>
+<table align="center" border="1">
+<tbody>
+<tr>
+<td width="133">
+<p>తేది/లు Date/s</p>
+</td>
+<td width="505">
+<p>సొమ్ము చెల్లించవలసిన బకాయి/ లు Amount(s) due</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table align="center">
+	<tr>
+<p align="center">&nbsp;</p>
+<p align="center"><strong>షెడ్యూలు -&nbsp; III (SCHEDULE &ndash; III)</strong></p>
+<p align="center">హామీ ఇవ్వబడిన వస్తువుల వివరములు (Particulars of Securities Hypothecated)</p>
+</tr>
+</table>
+<table align="center" border="1" >
+<tbody>
+<tr>
+<td width="79">
+<p>నంబరు/</p>
+<p>Dates/s</p>
+</td>
+<td width="78">
+<p>వస్తువు/ Things</p>
+</td>
+<td width="138">
+<p>వివరములు Particulars</p>
+</td>
+<td width="215">
+<p>తూకం లేక వైశాల్యం</p>
+<p>Qty/Area</p>
+</td>
+<td width="128">
+<p>అధమం విలువ</p>
+<p>Value</p>
+</td>
+</tr>
+<tr>
+<td width="79">
+<p>&nbsp;</p>
+</td>
+<td width="78">
+<p>&nbsp;</p>
+</td>
+<td width="138">
+<p>&nbsp;</p>
+</td>
+<td width="215">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</td>
+<td width="128">
+<p>&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p align="center">For A.P. GRAMEENA VIKAS BANK</p>
+<p align="center">Branch Manager&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signature /</p>
+
+<br><br>
+<table align="center">
+	<tr>
+		<td align="center"> <h1>ANDHRA PRADESH GRAMEENA VIKAS BANK</h1></td>
+</tr>
+<tr>
+		<td align="center"> <?php echo $branch; ?>Branch</td>
+	</tr>
+<tr>
+<td align="center"> <u><h1>DEMAND PROMISSORY NOTE</h1></u></td>
+</tr>
+</table>
+<table align="center">
+<tr>
+		<td align="left" width="1000px">Rs <?php echo $beneficiary_termloan;?> </td>
+		<td align="right" width="1000px"><b>Date</b> <?php echo date("d/m/Y");?> </td>
+</tr>
+<tr>
+		<td align="right" width="10px"></td>
+		<td align="right" width="10px"><b>Place</b> <?php echo $beneficiary_resaddress; ?></td>
+	</tr>
+
+	<tr>
+		<td align="left" width="100%">ON DEMAND I/WE <?php echo $beneficiary_name ?>
+ [Borrower(s)] promise to pay Andhra Pradesh Grameena  Vikas Bank  or order at the Andhra Pradesh Grameena  Vikas Bank <?php echo $branch; ?> Branch the sum of Rupees <?php echo $beneficiary_termloan;?>		for value received with interest from thisdate <?php echo date("d/m/Y"); ?>at___12	% with Monthly rests
+</td>
+	</tr>
+	<tr>
+<td align="left" width="1000px">Rev <br>Stamp</td>
+<td align="center">Signature of borrower <?php echo $beneficiary_name ?></td>
+	</tr>
+<tr>
+		<td align="left" width="1000px">Endorsed in favor of APGVB 	Branch <?php echo $branch; ?>
+	</tr>
+	<tr>
+		<td align="left" width="1000px"><br>
+			N.B. : Stamp should be cancelled by the maker writing his name or initials across them together with the true date of his so writing, viz., the date of this note, in addition to his signatures on the note
+
+</td>
+	</tr>
+</table>
+
+
+<table align="center">
+	
+<tr>
+<td align="center"> <u><h1>D.P. NOTE DELIVERY LETTER</h1></u></td>
+</tr>
+</table>
+<table align="center">
+<tr>
+		<td align="left" width="1000px">The Branch Manager </td>
+			<td align="right" width="1000px"><b>Date</b><?php echo date("d/m/Y");?> </td>
+	</tr>
+	
+<tr>
+		<td align="left" width="1000px">ANDHRA PRADESHGRAMEENA VIKAS BANK </td>
+	</tr>
+
+	<tr>
+		<td align="left" width="100%">Kindly takedelivery of a D.P. Notefor Rs (Rupees
+) <?php echo $beneficiary_termloan;?> dated <?php echo date("d/m/Y");?>  made by Sri . <?php echo $beneficiary_name ?>
+ I / We further, request you to note that I / We dispense with a notice of dishonour in terms of Section 98 (a) of the
+Negotiable Instruments Act, 1881 that in the event of payment not being made on demand, the Bank is at liberty to give
+time for payment of either of us without discharging the other of us from liability.
+
+</td>
+	</tr>
+	<tr>
+<td align="left" width="1000px">Yours faithfully</td>
+
+	</tr>
+<tr>
+		<td align="left" width="1000px">
+		    <br><br><br>
+
+Borrower________________________________ 	(name)_____________________________ 	(Signature)
+
+
+</td>
+	</tr>
+	
+</table>
+<p style="page-break-after: always;">&nbsp;</p>
+<p style="page-break-before: always;">&nbsp;</p>
+<table align="center">
+	
+<tr>
+<td align="center"> <u><h1>REVIVAL LETTER</h1></u></td>
+</tr>
+</table>
+<table align="center">
+<tr>
+		<td align="left" width="1000px">The Andhra Pradesh Grameena Vikas Bank<br>
+ 	<?php echo $branch;?> Branch<br> Dear Sir or Madam:
+</td>
+	</tr>
+
+
+	<tr>
+		<td align="left" width="1000px">With reference to the installment credit loan/ Medium Term Loan/ cash credit loan borrowed by me/ us Sri/ Smt/ Messrs  	
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________ Secured by the hypothecation cum guarantee*/ mortgage cum guarantee*/ pledge*/ mortgage*/ hypothecation* under  the deed 							
+
+ 	<br>
+
+I/we acknowledge for the purpose of Section 18 of the Indian Limitation Act 1963 and limitation law in order to preclude any question of limitation that I am/ we are liable to you for the payment of the said loan and / or the outstanding installments there under and interest thereon and that all the relative securities, agreements and obligations including the above said hypothecation/ term loan agreement/ mortgage/ pledge shall remain in force till the said loan is fully adjusted and repaid by me/ us to your Bank.
+
+
+</td>
+	</tr>
+	<tr>
+<td align="left" width="1000px">Yours faithfully</td>
+
+	</tr>
+<tr>
+		<td align="left" width="1000px">Signature(s) of the Borrower(s)<br><br><br>
+
+Dated the______________________ 	day of_____________________ 	20 _______	at_________________<br> 
+
+
+
+</td>
+	</tr>
+	
+</table>
+
+<img src="" alt="image1">
+<img src="" alt="image2">
+<button onclick="" style="background-color:#168DEE;color:#FFFFFF;border-color:#168DEE;margin-left:auto;margin-right:auto;display:block;margin-top:06%;margin-bottom:0%;width:150px;height:40px;">Download images</button>
+</div>
+</div>
+</div>
+<table>
+	<tr>
+<td><div class="text-center">
+        <button onclick="printDiv('printableArea')" style="background-color:#168DEE;color:#FFFFFF;border-color:#168DEE;margin-left:auto;margin-right:auto;display:block;margin-top:06%;margin-bottom:0%;width:150px;height:40px;" onclick="exportHTML();"> Save or Print PDF</button>
+    </div></td>
+<td><div class="text-center">
+        <button onclick="goBack()" style="background-color:#168DEE;color:#FFFFFF;border-color:#168DEE;margin-left:auto;margin-right:auto;display:block;margin-top:06%;margin-bottom:0%;width:150px;height:40px;" onclick="exportHTML();"> Go Back </button>
+    </div></td></td>
+  </tr>  
+</table>    
+
+
+<script>
+function download1(aid){
+    var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState==4 && xhr.status==200) {
+        var blob = new Blob([xhr.response], {
+            type: xhr.getResponseHeader("Content-Type")
+        });
+        var imgUrl = window.URL.createObjectURL(blob);
+        document.getElementById("img").src = imgUrl;
+      }
+    }
+  xhr.responseType = "arraybuffer";
+  xhr.open("GET","Hacker.jpg",true);
+  xhr.send();
+}
+</script>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+<script>
+    function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+
+ </div>
+              </div>
+            </div>
+            <!--/ Invoice Footer -->
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+<?php include('includes/footer.php');?>
+  <!-- BEGIN VENDOR JS-->
+  <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
+  <script src="app-assets/js/core/app.js" type="text/javascript"></script>
+  <script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+
+</body>
+</html>
+<?php endif;?>
